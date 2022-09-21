@@ -54,7 +54,7 @@ class UserDetailsViewModel(private val userRepo: UserRepo, private val postRepo:
             if (isSuccess)
                 mutableUserDetailsLiveData.value = mapValues(userLst, postLst)
             else
-                mutableUserDetailsErrorLiveData.value = " Please try again later"
+                mutableUserDetailsErrorLiveData.value = " Unable to fetch results, try again later."
         }
     }
 

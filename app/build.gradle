@@ -79,6 +79,9 @@ dependencies {
     // OK Http
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
+    // Avatar view
+    implementation "io.getstream:avatarview-coil:1.0.4"
+
     // Pagination
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"
 

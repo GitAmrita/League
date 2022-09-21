@@ -2,10 +2,12 @@ package com.example.league
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.league.databinding.ActivityMainBinding
 import com.example.league.repository.PostRepoImpl
 import com.example.league.repository.UserRepoImpl
@@ -26,22 +28,28 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initializeObservers()
-        getUsers()
+        initializeRecycleView()
+        getUserDetails()
     }
 
     private fun initializeObservers() {
         viewModel.userDetailsObserver.observe(this as LifecycleOwner, Observer{
-            val users = it.size
-            val name = it[0].userName
-            val body = it[0].body
+            binding.recycleView.adapter = UserDetailsAdapter(it!!)
+            binding.recycleView.adapter ?.notifyDataSetChanged()
+            binding.progressBar.visibility = View.GONE
         })
 
         viewModel.userDetailsLiveDataErrorObserver.observe(this as LifecycleOwner,Observer {
+            binding.progressBar.visibility = View.GONE
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
     }
 
-    private fun getUsers() {
+    private fun initializeRecycleView() {
+        binding.recycleView.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun getUserDetails() {
         viewModel.get()
     }
 }
