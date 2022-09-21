@@ -41,14 +41,14 @@ class UserDetailsViewModel(private val userRepo: UserRepo, private val postRepo:
                 is NetworkResult.Success -> userLst = users.await().data!!
                 else -> {
                     isSuccess = false
-                    Log.e("USERS", users.await().message!! )
+                   // Log.e("USERS", users.await().message!! )
                 }
             }
             when(posts.await()) {
                 is NetworkResult.Success -> postLst = posts.await().data!!
                 else -> {
                     isSuccess = false
-                    Log.e("POSTS", posts.await().message!! )
+                   // Log.e("POSTS", posts.await().message!! )
                 }
             }
             if (isSuccess)
@@ -58,7 +58,7 @@ class UserDetailsViewModel(private val userRepo: UserRepo, private val postRepo:
         }
     }
 
-    private fun mapValues(users: List<User>, posts: List<Post>): List<UserDetails> {
+    fun mapValues(users: List<User>, posts: List<Post>): List<UserDetails> {
         val list = mutableListOf<UserDetails>()
         for (u in users) {
             for (p in posts) {
