@@ -1,5 +1,6 @@
 package com.example.league.network
 
+// Function to return user understandable error messages based on http error codes
 fun getErrorMessages(errorCode: Int): String {
     return when(errorCode) {
         in 400..499 -> " bad request, client error."

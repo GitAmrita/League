@@ -1,6 +1,5 @@
 package com.example.league.network
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,6 +14,8 @@ object RetrofitClient {
     private const val TIME_OUT = 60L
     private const val API_KEY = "9E633129DCCD9A621C771BB0A88DAC7C"
 
+    // OkHttp will automatically log incoming and outgoing HTTP requests and responses to Logcat.
+    // This is added for debugging purposes while development.
     private val interceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }

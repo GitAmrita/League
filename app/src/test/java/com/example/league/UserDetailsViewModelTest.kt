@@ -3,7 +3,6 @@ package com.example.league
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.league.model.Post
 import com.example.league.model.User
-import com.example.league.model.UserDetails
 import com.example.league.network.NetworkResult
 import com.example.league.repository.PostRepo
 import com.example.league.repository.UserRepo
